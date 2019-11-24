@@ -1,14 +1,20 @@
 const path = require("path");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const TerserJSPlugin = require('terser-webpack-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 module.exports = {
     entry: './src/js/index.js',
     output: {
         filename: "bundle.js",
-        path: path.join(__dirname, "dist/js")
+        path: path.join(__dirname, "dist")
     },
     watch: false,
     mode: "development",
     devtool: "source-map",
+    optimization: {
+        minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})]
+    },
     module: {
         rules: [
             {
@@ -20,7 +26,17 @@ module.exports = {
                         presets: ["@babel/preset-env"]
                     }
                 }
+            },
+            {
+                test: /\.css$/,
+                use: [MiniCssExtractPlugin.loader, 'css-loader']
             }
         ]
-    }
+    },
+    plugins: [
+        new MiniCssExtractPlugin({
+            filename: '[name].css',
+            chunkFilename: '[id].css'
+        })
+    ]
 }
