@@ -1,0 +1,35 @@
+{
+  "name": "GitHubJobs-ARBM",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack --mode development --watch",
+    "build": "webpack --mode production",
+    "live": "webpack-dev-server --inline --hot"
+  },
+  "browserslist": [
+    "last 1 version",
+    "> 1%"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CC-Team-Alfa/GitHubJobs-ARBM.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CC-Team-Alfa/GitHubJobs-ARBM/issues"
+  },
+  "homepage": "https://github.com/CC-Team-Alfa/GitHubJobs-ARBM#readme",
+  "devDependencies": {
+    "@babel/core": "^7.7.4",
+    "@babel/preset-env": "^7.7.4",
+    "babel-loader": "^8.0.6",
+    "css-loader": "^3.2.0",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.9.0"
+  }
+}
