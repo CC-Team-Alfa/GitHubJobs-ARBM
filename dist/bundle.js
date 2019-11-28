@@ -110,6 +110,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./src/js/getHouse.js":
+/*!****************************!*\
+  !*** ./src/js/getHouse.js ***!
+  \****************************/
 /***/ "./src/js/generateCharacterEndpoint.js":
 /*!*********************************************!*\
   !*** ./src/js/generateCharacterEndpoint.js ***!
@@ -119,6 +123,18 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+
+function getHouse(id) {
+  var url = "https://www.potterapi.com/v1/houses/".concat(id, "?key=$2a$10$SryMGjiskclp/nFOsb29Gu1yA9lM2mQwurU8YYNVf7CbzBi0QDwnm");
+  return fetch(url).then(function (response) {
+    return response.json();
+  }).then(function (response) {
+    return response[0];
+  });
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (getHouse); // example
+// get
 // function that generates a link 
 function generateCharacterEndpoint(parameters) {
   var url = 'https://www.potterapi.com/v1/characters';
@@ -166,6 +182,7 @@ function getCharacters(parameters) {
 
 /* harmony default export */ __webpack_exports__["default"] = (getCharacters);
 
+
 /***/ }),
 
 /***/ "./src/js/index.js":
@@ -180,6 +197,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _css_style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../css/style.css */ "./src/css/style.css");
 /* harmony import */ var _css_style_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_css_style_css__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _images_harry_potter_3670411_1920_png__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../images/harry-potter-3670411_1920.png */ "./src/images/harry-potter-3670411_1920.png");
+
+/* harmony import */ var _getHouse__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./getHouse */ "./src/js/getHouse.js");
+
+
+
+Object(_getHouse__WEBPACK_IMPORTED_MODULE_2__["default"])('5a05da69d45bd0a11bd5e06f').then(function (response) {
+  return console.log(response);
+
 /* harmony import */ var _generateCharacterEndpoint__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./generateCharacterEndpoint */ "./src/js/generateCharacterEndpoint.js");
 /* harmony import */ var _getCharacters__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./getCharacters */ "./src/js/getCharacters.js");
 
@@ -191,6 +216,7 @@ var a = Object(_getCharacters__WEBPACK_IMPORTED_MODULE_3__["default"])({
   house: 'Gryffindor'
 }).then(function (data) {
   return console.log(data);
+
 });
 
 /***/ })
