@@ -114,11 +114,16 @@ __webpack_require__.r(__webpack_exports__);
 /*!****************************!*\
   !*** ./src/js/getHouse.js ***!
   \****************************/
+/***/ "./src/js/generateCharacterEndpoint.js":
+/*!*********************************************!*\
+  !*** ./src/js/generateCharacterEndpoint.js ***!
+  \*********************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+
 function getHouse(id) {
   var url = "https://www.potterapi.com/v1/houses/".concat(id, "?key=$2a$10$SryMGjiskclp/nFOsb29Gu1yA9lM2mQwurU8YYNVf7CbzBi0QDwnm");
   return fetch(url).then(function (response) {
@@ -130,6 +135,53 @@ function getHouse(id) {
 
 /* harmony default export */ __webpack_exports__["default"] = (getHouse); // example
 // get
+// function that generates a link 
+function generateCharacterEndpoint(parameters) {
+  var url = 'https://www.potterapi.com/v1/characters';
+  var apiKey = "key=$2a$10$SryMGjiskclp/nFOsb29Gu1yA9lM2mQwurU8YYNVf7CbzBi0QDwnm";
+  var param = "";
+
+  for (var key in parameters) {
+    var value = parameters[key];
+    param += encodeURIComponent(key) + "=" + encodeURIComponent(value) + "&";
+  }
+
+  if (param.length > 0) {
+    param = param.substring(0, param.length - 1);
+    url = url + "?" + apiKey + "&" + param;
+  }
+
+  return url;
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (generateCharacterEndpoint); //example
+//generateCharacterEndpoint({"bloodStatus":"pure-blood", "role":"student"})
+// -> "https://www.potterapi.com/v1/characters?key=$2a$10$SryMGjiskclp/nFOsb29Gu1yA9lM2mQwurU8YYNVf7CbzBi0QDwnm&bloodStatus=pure-blood&role=student"
+
+/***/ }),
+
+/***/ "./src/js/getCharacters.js":
+/*!*********************************!*\
+  !*** ./src/js/getCharacters.js ***!
+  \*********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _generateCharacterEndpoint__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./generateCharacterEndpoint */ "./src/js/generateCharacterEndpoint.js");
+ // function returns array of characters with specified parameters
+
+function getCharacters(parameters) {
+  return fetch(Object(_generateCharacterEndpoint__WEBPACK_IMPORTED_MODULE_0__["default"])(parameters)).then(function (response) {
+    return response.json();
+  });
+} // example
+// getCharacters({house:'Gryffindor'}).then(array => console.log(array))
+
+
+/* harmony default export */ __webpack_exports__["default"] = (getCharacters);
+
 
 /***/ }),
 
@@ -145,12 +197,26 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _css_style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../css/style.css */ "./src/css/style.css");
 /* harmony import */ var _css_style_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_css_style_css__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _images_harry_potter_3670411_1920_png__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../images/harry-potter-3670411_1920.png */ "./src/images/harry-potter-3670411_1920.png");
+
 /* harmony import */ var _getHouse__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./getHouse */ "./src/js/getHouse.js");
 
 
 
 Object(_getHouse__WEBPACK_IMPORTED_MODULE_2__["default"])('5a05da69d45bd0a11bd5e06f').then(function (response) {
   return console.log(response);
+
+/* harmony import */ var _generateCharacterEndpoint__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./generateCharacterEndpoint */ "./src/js/generateCharacterEndpoint.js");
+/* harmony import */ var _getCharacters__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./getCharacters */ "./src/js/getCharacters.js");
+
+
+
+
+
+var a = Object(_getCharacters__WEBPACK_IMPORTED_MODULE_3__["default"])({
+  house: 'Gryffindor'
+}).then(function (data) {
+  return console.log(data);
+
 });
 
 /***/ })
