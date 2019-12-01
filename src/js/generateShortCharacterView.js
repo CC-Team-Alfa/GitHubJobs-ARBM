@@ -16,5 +16,6 @@ function generateShortCharacterView(character) {
             appendData(data);
         });
 }
-const characters = document.querySelector(".menu-item")
-characters.addEventListener('click', generateShortCharacterView)
+
+//example
+//generateShortCharacterView({name:"Harry Potter"})
