@@ -10,6 +10,9 @@ function generateCharacterEndpoint(parameters) {
     if (param.length > 0) {
         param = param.substring(0, param.length - 1);
         url = url + "?" + apiKey + "&" + param
+    } 
+    if (parameters == null) {
+        url = url + "?" + apiKey
     }
     return url;
 }
