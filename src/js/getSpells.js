@@ -3,7 +3,6 @@ function getSpells() {
     var url = `https://www.potterapi.com/v1/spells?${apiKey}`;
     return fetch(url)
         .then(res => res.json())
-        .then(res => console.log(res))
 }
 
 export default getSpells;

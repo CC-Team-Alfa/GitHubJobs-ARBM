@@ -1,5 +1,9 @@
 import getCharacters from "./getCharacters";
+import generateCharactersList from "./generateCharactersList";
 
-document.getElementById('data');
-getCharacters().then(o => console.log(o))
-console.log('aaaaa')
+const data = document.getElementById('data');
+
+getCharacters()
+    .then(array => generateCharactersList(array))
+    .then(list => data.appendChild(list))
+    .catch(err => console.error(err));

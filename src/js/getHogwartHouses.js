@@ -3,7 +3,6 @@ function getHogwartHouses() {
     var url = `https://www.potterapi.com/v1/houses?${apiKey}`;
     return fetch(url)
         .then(res => res.json())
-        .then(res => console.log(res))
 }
 
 export default getHogwartHouses;
