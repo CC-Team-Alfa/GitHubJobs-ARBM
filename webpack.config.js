@@ -4,9 +4,12 @@ const TerserJSPlugin = require('terser-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 module.exports = {
-    entry: './src/js/index.js',
+    entry: {
+        index: './src/js/index.js',
+        characters: './src/js/characters.js'
+    },
     output: {
-        filename: "bundle.js",
+        filename: "[name].js",
         path: path.join(__dirname, "dist")
     },
     watch: false,
