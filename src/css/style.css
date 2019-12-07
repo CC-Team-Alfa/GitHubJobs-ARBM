@@ -84,7 +84,7 @@ footer span {
         position: relative;
     }
 
-    ul {
+   nav ul {
         flex-direction: row;
         justify-content: flex-end;
     }
