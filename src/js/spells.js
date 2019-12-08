@@ -4,8 +4,12 @@ const data = document.getElementById('data');
 
 getSpells().then(array => {
     array.forEach(element => {
+        const div = document.createElement('div');
+        div.classList.add('spells');
         for(const [k, v] of Object.entries(element)) {
-            data.innerHTML += `<p>${k}: ${v}</p>`;
+            if (k !== '_id' && k != '__v')
+                div.innerHTML += `<p class="${k}">${k}: ${v}</p>`;
         }
+        document.getElementById('data').appendChild(div);
     });
 })
