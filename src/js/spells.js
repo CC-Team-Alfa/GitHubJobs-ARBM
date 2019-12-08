@@ -10,6 +10,7 @@ getSpells().then(array => {
             if (k !== '_id' && k != '__v')
                 div.innerHTML += `<p class="${k}">${k}: ${v}</p>`;
         }
+        div.innerHTML += "<br>";
         document.getElementById('data').appendChild(div);
     });
 })

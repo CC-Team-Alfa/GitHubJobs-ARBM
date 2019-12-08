@@ -57,6 +57,10 @@ a {
     background-size: contain;
 }
 
+.houses, .spells {
+    text-transform: uppercase;
+}
+
 /* main */
 .character {
     margin: 30px 20px 10px;
