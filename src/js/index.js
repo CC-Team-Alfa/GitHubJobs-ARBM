@@ -4,4 +4,5 @@ import './getSpells';
 import './getHouse'
 import './generateCharacterEndpoint'
 import './getCharacters'
-import './generateShortCharacterView';
+import './generateShortCharacterView'
+import './generateDetailsCharacterView';
