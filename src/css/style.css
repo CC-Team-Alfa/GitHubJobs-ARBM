@@ -62,12 +62,18 @@ a {
 }
 
 /* main */
+.main {
+    padding-top: 30px;
+}
+.welcome-text {
+  display: none;
+}
 .character {
     margin: 30px 20px 10px;
 }
 
-.name {
-    font-size: 1.5rem;
+.school, .wand, .house{
+    font-weight: 800;
 }
 
 
@@ -83,12 +89,18 @@ footer span {
 }
 
 /* media queries */
+@media only screen and (max-width:425px){
+    .main {
+        position: relative;
+        top:100%;
+    }
+}
 @media (min-width: 640px) {
     nav {
         position: relative;
     }
 
-   nav ul {
+    nav ul {
         flex-direction: row;
         justify-content: flex-end;
     }
@@ -126,6 +138,18 @@ footer span {
         border-radius: 2%;
         box-shadow: 2px 2px 5px black;
         overflow: auto;
+    }
+    .welcome-text {
+        display: block;
+        width: 50%;
+        font-size: 3em;
+        position: relative;
+        top: 10%;
+       left: 25%;
+        text-align: center;
+        color: darkred;
+        font-weight: 800;
+        text-shadow: 2px 2px 4px black;
     }
 
 }
